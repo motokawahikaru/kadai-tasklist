@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  root to: "toppages#index"
+  # Webの世界(HTTP)とRailsの世界の２つのインターフェース
+  
+  root to: "tasks#index"
   
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
   get "signup", to: "users#new"
-  get "users", to:"toppages#index"
+  post "signup", to: "users#create"
+  
   resources :tasks
-  resources :users, only: [:show, :new, :create]
 end
